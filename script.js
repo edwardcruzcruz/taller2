@@ -4,8 +4,8 @@ function myFunction(xml,str) {
   var htmlList = "";
   var x = xmlDoc.getElementsByTagName("item");
   for (i = 0; i <x.length; i++) {
-    htmlList += "<div class='container'><div class='row'><div class='col-4'><p>photo---</p></div>"; 
-    htmlList += "<div class='col-8'><div class='container'><div class='row'> <div class='col-12'><p>"+'<b>@'+ str +'</b>, dijo:'+ "</p></div></div>";
+    htmlList += "<div class='container'><div class='row'><div class='col-1'><img src='Icon/Twitter.png' alt='Icono Twitter' height='42' width='42'></div>"; 
+    htmlList += "<div class='col-11'><div class='container'><div class='row'> <div class='col-12'><p>"+'<b>@'+ str +'</b>, dijo:'+ "</p></div></div>";
     htmlList += "<div class='row'> <div class='col-12'><p>"+'"'+ x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue +'"'+ "</p></div></div>";
     htmlList += "<div class='row'> <div class='col-12'><p>"+ x[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue+"</p></div></div></div></div></div></div>";
     //htmlList += "<div class='row'> <div class='col-12'><p>----------------------------------------------------------------------------------------------------------------------------------</p></div></div>";
