@@ -1,4 +1,20 @@
+function myFunction(xml,str) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var htmlList = "";
+  var x = xmlDoc.getElementsByTagName("item");
+  for (i = 0; i <x.length; i++) {
+    htmlList += "<div class='container'><div class='row'><div class='col-4'><p>photo---</p></div>"; 
+    htmlList += "<div class='col-8'><div class='container'><div class='row'> <div class='col-12'><p>"+'<b>@'+ str +'</b>, dijo:'+ "</p></div></div>";
+    htmlList += "<div class='row'> <div class='col-12'><p>"+'"'+ x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue +'"'+ "</p></div></div>";
+    htmlList += "<div class='row'> <div class='col-12'><p>"+ x[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue+"</p></div></div></div></div></div></div>";
+    //htmlList += "<div class='row'> <div class='col-12'><p>----------------------------------------------------------------------------------------------------------------------------------</p></div></div>";
+  }
+  document.getElementById("noticias").innerHTML =htmlList ;
+}
 function showRSS(str) {
+  var html = "";
+
   if (str.length==0) {
     document.getElementById("noticias").innerHTML="";
     return;
@@ -11,7 +27,8 @@ function showRSS(str) {
   }
   xmlhttp.onreadystatechange=function() {
     if (this.readyState==4 && this.status==200) {
-      document.getElementById("noticias").innerHTML=this.responseText;
+      myFunction(this,str);
+      //document.getElementById("noticias").innerHTML=this.responseText;
     }
   }
   xmlhttp.open("GET","https://twitrss.me/twitter_user_to_rss/?user="+str,true);
@@ -25,7 +42,6 @@ $(document).ready(function(){
     var texto = $('input#buscador').val();
     
     if(texto.length != 0) {
-      $('#noticias ').append(" <h1>"+texto+"</h1>");
       showRSS(texto);
     } else {
       $('#noticias .card-body').each(function(){
