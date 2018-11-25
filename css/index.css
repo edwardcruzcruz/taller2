@@ -1,0 +1,7 @@
+#noticias {
+	border: solid #000;
+	border-radius: 25px;
+}
+div[id^="caja"]{
+	border-bottom-style: solid;
+}
